@@ -178,6 +178,31 @@
   animation: flash-pop 650ms ease-out forwards;
 }
 
+.seek-slider {
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 9999px;
+  background: var(--overlay-ring);
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.seek-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 0.75rem;
+  width: 0.75rem;
+  border-radius: 9999px;
+  background: var(--primary);
+}
+
+.seek-slider::-moz-range-thumb {
+  height: 0.75rem;
+  width: 0.75rem;
+  border: none;
+  border-radius: 9999px;
+  background: var(--primary);
+}
+
 .zoom-slider {
   -webkit-appearance: slider-vertical;
   appearance: slider-vertical;
