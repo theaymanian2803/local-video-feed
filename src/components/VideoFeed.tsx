@@ -34,6 +34,9 @@ export function VideoFeed({ clips }: { clips: Clip[] }) {
     root.scrollTo({ top: next * root.clientHeight, behavior: "smooth" });
   };
 
+  const remaining = clips.length - activeIdx - 1;
+  const progress = clips.length > 1 ? (activeIdx / (clips.length - 1)) * 100 : 100;
+
   return (
     <div className="relative">
       <div
@@ -51,6 +54,19 @@ export function VideoFeed({ clips }: { clips: Clip[] }) {
             />
           </div>
         ))}
+      </div>
+
+      {/* progress indicator */}
+      <div className="pointer-events-none absolute inset-x-0 top-4 flex flex-col items-center gap-1.5 px-16">
+        <span className="rounded-full bg-overlay px-3 py-1 text-xs font-semibold text-overlay-foreground ring-1 ring-overlay-ring backdrop-blur-md">
+          {activeIdx + 1} / {clips.length} · {remaining} left
+        </span>
+        <div className="h-1 w-32 overflow-hidden rounded-full bg-overlay/60 ring-1 ring-overlay-ring backdrop-blur-sm">
+          <div
+            className="h-full bg-primary transition-all duration-300"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
       </div>
 
       {/* up / down navigation */}
