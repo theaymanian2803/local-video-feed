@@ -61,13 +61,19 @@ function Index() {
     setClips((prev) => [...prev, ...next]);
   };
 
+  const closeFeed = () => {
+    urlsRef.current.forEach((u) => URL.revokeObjectURL(u));
+    urlsRef.current = [];
+    setClips([]);
+  };
+
   if (clips.length > 0) {
     return (
       <main className="relative">
         <VideoFeed clips={clips} />
         <button
           type="button"
-          onClick={() => setClips([])}
+          onClick={closeFeed}
           className="absolute left-3 top-4 z-10 flex size-10 items-center justify-center rounded-full bg-overlay text-overlay-foreground ring-1 ring-overlay-ring backdrop-blur-md transition active:scale-95"
           aria-label="Close feed and go home"
         >
