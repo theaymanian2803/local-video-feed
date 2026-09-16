@@ -149,3 +149,41 @@
     color: var(--color-foreground);
   }
 }
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes flash-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  25% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+.animate-flash {
+  animation: flash-pop 650ms ease-out forwards;
+}
+
+.zoom-slider {
+  -webkit-appearance: slider-vertical;
+  appearance: slider-vertical;
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 1.25rem;
+  accent-color: var(--primary);
+  background: transparent;
+}
