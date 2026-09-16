@@ -34,7 +34,7 @@ export function VideoCard({ src, name, active }: Props) {
 
   useEffect(() => {
     const v = videoRef.current;
-    if (v) v.playbackRate = SPEEDS[speedIdx];
+    if (v) v.playbackRate = SPEEDS[speedIdx] ?? 1;
   }, [speedIdx, active]);
 
   const showFlash = (kind: "play" | "pause") => {

@@ -14,7 +14,7 @@ export function VideoFeed({ clips }: { clips: Clip[] }) {
       (entries) => {
         for (const entry of entries) {
           if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
-            const idx = Number((entry.target as HTMLElement).dataset.index);
+            const idx = Number((entry.target as HTMLElement).dataset["index"]);
             setActiveIdx(idx);
           }
         }
