@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { FolderOpen, Film, Plus } from "lucide-react";
+import { FolderOpen, Film, Plus, X } from "lucide-react";
 import { VideoFeed, type Clip } from "@/components/VideoFeed";
 
 export const Route = createFileRoute("/")({
@@ -65,6 +65,14 @@ function Index() {
     return (
       <main className="relative">
         <VideoFeed clips={clips} />
+        <button
+          type="button"
+          onClick={() => setClips([])}
+          className="absolute left-3 top-4 z-10 flex size-10 items-center justify-center rounded-full bg-overlay text-overlay-foreground ring-1 ring-overlay-ring backdrop-blur-md transition active:scale-95"
+          aria-label="Close feed and go home"
+        >
+          <X className="size-5" />
+        </button>
         <button
           type="button"
           onClick={() => filesRef.current?.click()}
